@@ -1,0 +1,212 @@
+:root {
+  --morado: #B026FF;
+  --morado-hover: #C44DFF;
+  --morado-rgb: 176, 38, 255;
+
+  /* Efecto cristal */
+  --vidrio: rgba(255, 255, 255, 0.05);
+  --vidrio-hover: rgba(255, 255, 255, 0.12);
+  --vidrio-borde: rgba(255, 255, 255, 0.12);
+  --vidrio-blur: blur(16px);
+
+  --neon-glow: 0 0 6px rgba(var(--morado-rgb), 0.9),
+               0 0 18px rgba(var(--morado-rgb), 0.6),
+               0 0 38px rgba(var(--morado-rgb), 0.35);
+
+  /* Prioridades */
+  --prioridad-alta: #9D00FF;
+  --prioridad-media: #B77CFF;
+  --prioridad-baja: #E0CCFF;
+
+  /* Estados */
+  --estado-por-hacer: #5B3F8C;
+  --estado-progreso: #C44DFF;
+  --estado-completada: #3B1D6E;
+}
+
+body {
+  min-height: 100vh;
+  color: #fff;
+  padding-top: 100px;
+  background: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)),
+    url('https://images.unsplash.com/photo-1496588152823-86ff7695e68f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D') center/cover no-repeat fixed;
+}
+
+/* navbar */
+.isla-dinamica-contenedor {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 1050;
+  padding: 0 1rem;
+}
+
+.isla-dinamica {
+  background-color: var(--vidrio);
+  backdrop-filter: var(--vidrio-blur);
+  -webkit-backdrop-filter: var(--vidrio-blur);
+  border: 1px solid rgba(var(--morado-rgb), 0.6);
+  border-radius: 50px;
+  box-shadow: 0 0 12px rgba(var(--morado-rgb), 0.35);
+  padding: 0.5rem 1rem;
+}
+
+.isla-brand {
+  padding: 0.25rem 0.75rem;
+}
+
+.isla-logo-texto {
+  text-shadow: 0 0 8px rgba(var(--morado-rgb), 0.9);
+}
+
+.isla-nav-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.88rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 20px;
+  transition: background-color 0.2s;
+}
+
+.isla-nav-links a:hover,
+.isla-nav-links li.activo a {
+  color: #fff;
+  background-color: var(--vidrio-hover);
+}
+
+.isla-nav-links li.activo a {
+  box-shadow: 0 0 10px rgba(var(--morado-rgb), 0.4);
+}
+
+.isla-btn-crear {
+  background-color: var(--morado);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 0.4rem 0.95rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: var(--neon-glow);
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.isla-btn-crear:hover {
+  color: #fff;
+  background-color: var(--morado-hover);
+  box-shadow: 0 0 10px rgba(var(--morado-rgb), 1),
+              0 0 28px rgba(var(--morado-rgb), 0.8);
+}
+
+/* Tarjetas */
+.tarjeta-tarea {
+  background-color: var(--vidrio);
+  backdrop-filter: var(--vidrio-blur);
+  -webkit-backdrop-filter: var(--vidrio-blur);
+  border: 1px solid var(--vidrio-borde);
+  border-radius: 16px;
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.tarjeta-tarea:hover {
+  background-color: var(--vidrio-hover);
+  border-color: var(--morado);
+  transform: translateY(-5px);
+  box-shadow: var(--neon-glow);
+}
+
+.tarjeta-tarea.completada {
+  opacity: 0.55;
+}
+
+.tarjeta-tarea.completada .titulo-tarea {
+  text-decoration: line-through;
+  color: #a3a3a3;
+}
+
+.descripcion-tarea {
+  color: #b0b0b0;
+  font-size: 0.88rem;
+}
+
+.fecha-tarea {
+  color: #a3a3a3;
+}
+
+/* Prioridades*/
+.prioridad-alta {
+  background-color: var(--prioridad-alta);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(var(--morado-rgb), 0.8);
+}
+
+.prioridad-media {
+  background-color: var(--prioridad-media);
+  color: #1a0b2e;
+}
+
+.prioridad-baja {
+  background-color: var(--prioridad-baja);
+  color: #2a1245;
+}
+
+/* Estados */
+.tarjeta-tarea .bg-secondary {
+  background-color: var(--estado-por-hacer) !important;
+}
+
+.tarjeta-tarea .bg-warning {
+  background-color: var(--estado-progreso) !important;
+  color: #1a0b2e;
+  box-shadow: 0 0 10px rgba(var(--morado-rgb), 0.7);
+}
+
+.tarjeta-tarea .bg-success {
+  background-color: var(--estado-completada) !important;
+  color: #E0CCFF;
+  border: 1px solid rgba(var(--morado-rgb), 0.5);
+}
+
+/* ---------- Modal ---------- */
+.contenedor-modal {
+  background-color: var(--vidrio);
+  backdrop-filter: var(--vidrio-blur);
+  -webkit-backdrop-filter: var(--vidrio-blur);
+  border: 1px solid rgba(var(--morado-rgb), 0.7);
+  border-radius: 16px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(var(--morado-rgb), 0.45);
+}
+
+.contenedor-modal .form-control,
+.contenedor-modal .form-select {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--vidrio-borde);
+  color: #fff;
+  color-scheme: dark;
+}
+
+.contenedor-modal .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.contenedor-modal .form-control:focus,
+.contenedor-modal .form-select:focus {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: var(--morado);
+  box-shadow: 0 0 10px rgba(var(--morado-rgb), 0.7);
+}
+
+.contenedor-modal .form-select option {
+  background-color: #1d1d1d;
+}
+
+.form-check-input:checked {
+  background-color: var(--morado);
+  border-color: var(--morado);
+  box-shadow: 0 0 8px rgba(var(--morado-rgb), 0.9);
+}
